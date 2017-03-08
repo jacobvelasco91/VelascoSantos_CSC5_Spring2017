@@ -38,7 +38,7 @@ int main(int argc, char** argv) {
     //Output the transformed data
     cout<<fixed<<setprecision(1)<<showpoint;
     cout<<"Your car got "<<milPrgl<<" MPG "<<endl;
-    cout<<"which is not too bad!"<<endl;
+   
    
    
     
