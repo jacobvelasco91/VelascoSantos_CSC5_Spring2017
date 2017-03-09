@@ -20,9 +20,9 @@ using namespace std; //Name-space under which system libraries exist
 //Execution begins here
 int main(int argc, char** argv) {
     //Declare variables
-    string mnth1,mnth2,mnth3;
-    float rain1,rain2,rain3, avrgRn;
-  
+    string mnth1,mnth2,mnth3;       //3 variables for the input names of months
+    float rain1,rain2,rain3;        //3 variables for input of inches of rain
+    float avrgRn;                   //Average rainfall 
     
     //Initialize variables
     
@@ -34,16 +34,14 @@ int main(int argc, char** argv) {
     cin>>mnth2>>rain2;
     cin>>mnth3>>rain3;
     
-    avrgRn=(rain1+rain2+rain3)/3;
-          
-    
+
     //Map inputs to outputs or process the data
-    cout<<fixed<<setprecision(2)<<showpoint;
-    cout<<"The average rainfall for "<<mnth1<<", "<<mnth2
-        <<", and "<<mnth3<<" is "<<avrgRn<<endl;
+    avrgRn=(rain1+rain2+rain3)/3;
    
     //Output the transformed data
-   
+    cout<<fixed<<setprecision(2)<<showpoint;
+    cout<<"The average rainfall for "<<mnth1<<", "<<mnth2
+        <<", and "<<mnth3<<" is "<<avrgRn<<" inches of rain."<<endl;
    
     
     //Exit stage right!
