@@ -1,13 +1,13 @@
 /* 
  * File:   main.cpp
  * Author: Santos Velasco
- * Created on March 07, 2017, 2:38 PM
+ * Created on March 09, 2017, 12.11 AM
  * Purpose:  Template
  */
 
 //System Libraries
 #include <iostream>  //Input - Output Library
-#include <iomanip>   // Math inputs
+#include <iomanip>   // Formatting
 using namespace std; //Name-space under which system libraries exist
 
 //User Libraries
