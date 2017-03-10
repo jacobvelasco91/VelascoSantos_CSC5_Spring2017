@@ -31,16 +31,19 @@ int main(int argc, char** argv) {
     //Input data
     cout<<"How many cookies did you actually eat? ";cin>>ckAte;
    
-    //Map inputs to outputs or process the data
-    calAte=calPck*calAte;
-    
+    //Map inputs to outputs or process the data    
     if (ckAte>=bgCks)
+    {  
         cout<<"You ate the whole bag which is 3000 calories!!"<<endl;
-   
+               }
     
-   
-    //Output the transformed data
-    cout<<"you consumed "<<calAte<<" calories."<<endl;
+    else
+    {
+        calAte=calPck*ckAte;
+            cout<<"you consumed "<<calAte<<" calories."<<endl;
+            }
+     
+     //Output the transformed data
    
     
     //Exit stage right!
