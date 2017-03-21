@@ -1,7 +1,7 @@
 /* 
  * File:   main.cpp
  * Author: Santos Velasco
- * Created on March 09, 2017, 1:37 PM
+ * Created on March 20, 2017, 10:30 AM
  * Purpose:  Template
  */
 
@@ -21,18 +21,20 @@ int main(int argc, char** argv) {
     //Declare variables
   
     
+  
+    
     //Initialize variables
     
     //Input data
    
-          
-    
-    //Map inputs to outputs or process the data
+   
  
+    //Map inputs to outputs or process the data
+    
+       
    
     //Output the transformed data
-   
-   
+  
     
     //Exit stage right!
     return 0;
