@@ -15,6 +15,17 @@ using namespace std; //Name-space under which system libraries exist
 //Global Constants
 
 //Function Prototypes
+void menu(void);
+void prob1(void);
+void prob1(void);
+void prob1(void);
+void prob1(void);
+void prob1(void);
+void prob1(void);
+void prob1(void);
+void prob1(void);
+void prob
+
 
 //Execution begins here
 
