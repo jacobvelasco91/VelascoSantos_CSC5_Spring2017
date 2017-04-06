@@ -62,6 +62,7 @@ int main(int argc, char** argv) {
     int ones=ichange/100;
     cout<<ones<<"ones"<<endl;
     ichange-=ones*100;
+    
        
    
     //Output the transformed data
