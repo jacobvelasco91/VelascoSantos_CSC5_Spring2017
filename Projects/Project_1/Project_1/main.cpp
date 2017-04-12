@@ -10,6 +10,7 @@
 #include <iostream>  //Input - Output Library
 #include <iomanip>   // Formatting
 #include <cmath>     //math operators
+#include <string>    // Required for the string class
 using namespace std; //Name-space under which system libraries exist
 
 //User Libraries
@@ -22,6 +23,9 @@ using namespace std; //Name-space under which system libraries exist
 int main(int argc, char** argv) {
     //Declare variables
     char choice;    //choice of the category to be used in the game
+    string level;
+    string answer,answer2;
+    int wins=0;
     
    
    
@@ -72,8 +76,60 @@ int main(int argc, char** argv) {
     cout<<" |       Easy        |        Easy         |        Easy        |\n";
     cout<<" |                   |                     |                    |\n";
     cout<<" |*******************|*********************|********************|\n";
+    cout<<endl;
+          
     
     //Have the user enter category and level of difficulty
+    
+    do{
+        cout<<"Choose a category: ";cin>>choice;
+        if (!(choice=='M'||choice=='A'||choice=='H'))
+        cout<<"*Enter correct category character*\n";
+    } while (!(choice=='M'||choice=='A'||choice=='H'));
+    
+    switch (choice){
+        case 'M':
+            do{
+               cout<<"Difficulty level: "; cin>>level;
+
+               if (!(level=="easy"||level=="Easy"||level=="EASY"
+                    ||level=="medium"||level=="Medium"||level=="MEDIUM"
+                    ||level=="hard"||level=="Hard"||level=="HARD"))
+                   cout<<"*Enter correct difficulty level*"<<endl;
+               
+               else if (level=="medium"||level=="Medium"||level=="MEDIUM"){
+                   cout<<"What movie does Luke Skywalker come out in?"<<endl;
+                   cin>>answer>>answer2;
+                      if(answer=="star"&&answer2=="wars")
+                          wins++;
+                        cout<<wins<<endl;
+                      
+                         
+                       
+                   
+                       
+               }
+               
+               else if (level=="hard"||level=="Hard"||level=="HARD")
+                   cout<<"you chose a "<<endl;
+               
+            } while (!(level=="easy"||level=="Easy"||level=="EASY"
+                    ||level=="medium"||level=="Medium"||level=="MEDIUM"
+                    ||level=="hard"||level=="Hard"||level=="HARD"));
+            break;
+            
+           
+            
+        case 'A':
+            cout<<"This is animal"<<endl;break;
+        case 'H':
+            cout<<"This is history"<<endl;break;
+            
+           
+            
+    }
+            
+    
     
    
     
