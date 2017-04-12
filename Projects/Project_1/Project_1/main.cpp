@@ -21,7 +21,7 @@ using namespace std; //Name-space under which system libraries exist
 //Execution begins here
 int main(int argc, char** argv) {
     //Declare variables
-    char choice;
+    char choice;    //choice of the category to be used in the game
     
    
    
