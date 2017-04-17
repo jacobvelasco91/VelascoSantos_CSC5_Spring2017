@@ -24,7 +24,7 @@ int main(int argc, char** argv) {
     //Declare variables
     char choice;    //choice of the category to be used in the game
     string level;
-    string answer,answer2;
+    string answer1,answer2;
     int wins=0;
     
    
@@ -97,12 +97,14 @@ int main(int argc, char** argv) {
                     ||level=="hard"||level=="Hard"||level=="HARD"))
                    cout<<"*Enter correct difficulty level*"<<endl;
                
-               else if (level=="medium"||level=="Medium"||level=="MEDIUM"){
-                   cout<<"What movie does Luke Skywalker come out in?"<<endl;
-                   cin>>answer>>answer2;
-                      if(answer=="star"&&answer2=="wars")
-                          wins++;
-                        cout<<wins<<endl;
+               else if (level=="easy"||level=="Easy"||level=="EASY"){
+                   cout<<"In the movie Toy Story, what actor plays the voice of"
+                           " sheriff Woody?"<<endl;
+                   cin>>answer1>>answer2;
+                      if((answer1=="Tom"||answer1=="tom")&&(answer2=="Hanks"||answer2=="hanks")) {
+                          wins+=4;
+                        cout<<"You got it right! you get awarded 1 point"<<endl;
+                      }
                       
                          
                        
@@ -154,6 +156,7 @@ int main(int argc, char** argv) {
    
  
     //Map inputs to outputs or process the data   
+    cout<<"points:"<<wins<<endl;
     
        
    
