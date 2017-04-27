@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=Cygwin-Windows
 CND_ARTIFACT_DIR_Debug=dist/Debug/Cygwin-Windows
-CND_ARTIFACT_NAME_Debug=c___template
-CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin-Windows/c___template
+CND_ARTIFACT_NAME_Debug=lab_42717_savings
+CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin-Windows/lab_42717_savings
 CND_PACKAGE_DIR_Debug=dist/Debug/Cygwin-Windows/package
-CND_PACKAGE_NAME_Debug=c++template.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin-Windows/package/c++template.tar
+CND_PACKAGE_NAME_Debug=lab42717savings.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin-Windows/package/lab42717savings.tar
 # Release configuration
 CND_PLATFORM_Release=Cygwin-Windows
 CND_ARTIFACT_DIR_Release=dist/Release/Cygwin-Windows
-CND_ARTIFACT_NAME_Release=c___template
-CND_ARTIFACT_PATH_Release=dist/Release/Cygwin-Windows/c___template
+CND_ARTIFACT_NAME_Release=lab_42717_savings
+CND_ARTIFACT_PATH_Release=dist/Release/Cygwin-Windows/lab_42717_savings
 CND_PACKAGE_DIR_Release=dist/Release/Cygwin-Windows/package
-CND_PACKAGE_NAME_Release=c++template.tar
-CND_PACKAGE_PATH_Release=dist/Release/Cygwin-Windows/package/c++template.tar
+CND_PACKAGE_NAME_Release=lab42717savings.tar
+CND_PACKAGE_PATH_Release=dist/Release/Cygwin-Windows/package/lab42717savings.tar
 #
 # include compiler specific variables
 #
