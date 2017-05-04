@@ -2,7 +2,7 @@
  * File:   main.cpp
  * Author: Santos Velasco
  * Created on May 4, 2017, 9:51 AM
- * Purpose:  Chapter 6 Problem 6 Calculate retail with a function
+ * Purpose:  Chapter 6 Problem 1 Calculate retail with a function
  */
 
 //System Libraries
