@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=C++_Template
+PROJECTNAME=Gaddis_Ch6_Prob5_FallingDistance
 
 # Active Configuration
 DEFAULTCONF=Debug
