@@ -9,11 +9,11 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=GNU-MacOSX
 CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-MacOSX
-CND_ARTIFACT_NAME_Debug=c___template
-CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-MacOSX/c___template
+CND_ARTIFACT_NAME_Debug=gaddis_ch6_prob3_winningdivisions
+CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-MacOSX/gaddis_ch6_prob3_winningdivisions
 CND_PACKAGE_DIR_Debug=dist/Debug/GNU-MacOSX/package
-CND_PACKAGE_NAME_Debug=c++template.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/GNU-MacOSX/package/c++template.tar
+CND_PACKAGE_NAME_Debug=gaddisch6prob3winningdivisions.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/GNU-MacOSX/package/gaddisch6prob3winningdivisions.tar
 # Release configuration
 CND_PLATFORM_Release=Cygwin-Windows
 CND_ARTIFACT_DIR_Release=dist/Release/Cygwin-Windows
