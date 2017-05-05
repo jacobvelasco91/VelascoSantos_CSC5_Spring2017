@@ -7,8 +7,8 @@
 
 //System Libraries
 #include <iostream>  //Input - Output Library
-#include <iomanip>   // Formatting
-
+#include <iomanip>   //Formatting Library
+#include <cstdlib>
 using namespace std; //Name-space under which system libraries exist
 
 //User Libraries
@@ -65,7 +65,7 @@ float getSales(float division){
     cout<<"What was the division's sales for the quarter? ";cin>>amount;
     if (amount< 0) {
         cout<<"Input invalid: enter amount greater than 0"<<endl;
-        return 1;
+        exit(0);
     }
     else{
         return amount;
