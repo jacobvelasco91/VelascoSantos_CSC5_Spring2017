@@ -19,6 +19,8 @@ using namespace std; //Name-space under which system libraries exist
 //Execution begins here
 int main(int argc, char** argv) {
     //Declare variables
+   
+    
   
     
   
@@ -30,8 +32,9 @@ int main(int argc, char** argv) {
    
    
  
-    //Map inputs to outputs or process the data   
+    //Map inputs to outputs or process the data  
     
+ 
        
    
     //Output the transformed data
