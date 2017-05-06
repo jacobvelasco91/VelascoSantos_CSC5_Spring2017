@@ -1,13 +1,13 @@
 /* 
  * File:   main.cpp
  * Author: Santos Velasco
- * Created on April 1, 2017, 10:30 AM
- * Purpose:  C++ template
+ * Created on May 5, 2017, 10:58 PM
+ * Purpose:  Chapter 6 problem 10 future value
  */
 
 //System Libraries
 #include <iostream>  //Input - Output Library
-#include <iomanip>   // Formatting
+
 using namespace std; //Name-space under which system libraries exist
 
 //User Libraries
@@ -16,6 +16,7 @@ using namespace std; //Name-space under which system libraries exist
 
 //Function Prototypes
 
+
 //Execution begins here
 int main(int argc, char** argv) {
     //Declare variables
@@ -23,14 +24,11 @@ int main(int argc, char** argv) {
     
   
     
-  
-    
     //Initialize variables
     
     
     //Input data
-   
-   
+  
  
     //Map inputs to outputs or process the data  
     
