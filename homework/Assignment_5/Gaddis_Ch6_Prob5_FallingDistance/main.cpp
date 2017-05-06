@@ -1,7 +1,7 @@
 /* 
  * File:   main.cpp
  * Author: Santos Velasco
- * Created on April 1, 2017, 10:30 AM
+ * Created on May 5, 2017, 4:00 PM
  * Purpose:  Chapter 6 Problem 5 falling Distance
  */
 
