@@ -1,9 +1,8 @@
 /* 
  * File:   main.cpp
  * Author: Santos Velasco
- * Created on April 10, 2017, 5:20 PM
- * Purpose:  AskAbout 
- *           A game similar to Jeopardy.
+ * Created on May 25th, 2017, 11:38 AM
+ * Purpose:  Project 2- AskAbout (A game similar to jeopardy)
  */
 
 //System Libraries
