@@ -6,10 +6,12 @@
  */
 
 //System Libraries
-#include <iostream>  //Input - Output Library
+#include <iostream>  // Input - Output Library
 #include <iomanip>   //formatting
 #include <cmath>     //math operators
 #include <string>    // Required for the string class
+#include <ctime>     //Seed time for random number generator
+#include <cstdlib>   //Library for random number
 using namespace std; //Name-space under which system libraries exist
 
 //User Libraries
@@ -17,18 +19,24 @@ using namespace std; //Name-space under which system libraries exist
 //Global Constants
 
 //Function Prototypes
+string fnlSpin();
 
 //Execution begins here
 int main(int argc, char** argv) {
+    //Set Seed Time
+    srand(time(0));
     //Declare variables
-    char choice;    //choice of the category to be used in the game
-    string level;
-    string answer1,answer2;
-    int wins=0, losses=0; 
-    string grade;
-    float total=24.0f;
-    const float PERCENT=100.0f;
-    
+    char choice;                  //User's choice for category as a character
+    string level;                 //User's level choice as an input string
+    string answer1,answer2;       //Variables to hold answers; then compare
+    int wins=0, losses=0;         //Integer Variables;to increment wins & losses
+    string crtq;                  //String that will generate critique response 
+    float totalQ=24.0f;           //Total Questions available to ask
+    const float PERCENT=100.0f;   //Constant float percent 
+    bool m1=true,m2=true,m3=true; //for M ?'s if true makes ? available
+    bool a1=true,a2=true,a3=true; //for A ?'s if true makes ? available
+    bool c1=true,c2=true,c3=true; //for C ?'s if true makes ? available
+    bool h1=true,h2=true,h3=true; //for H ?'s if true makes ? available
     
     
    
@@ -38,28 +46,25 @@ int main(int argc, char** argv) {
     
   
     
-    //Welcoming text and Name of Game.
-    cout<<"                     -----------------------------------"<<endl;
-    cout<<"                     -       Welcome to AskAbout!      -"<<endl;
-    cout<<" -------------------------------------------------------------"
-        <<"--------------"<<endl;    
-    
+    //Welcoming introduction and Name of Game.
+    cout<<setw(16)<<" "<<"-       Welcome to AskAbout!      -"<<endl;
+    cout<<" ----------------------------------------------------------------\n";
     //Explanation of the game
-    cout<<" - Similar to Jeopardy, AskAbout displays 3 columns which are "
+    cout<<" - Similar to Jeopardy, AskAbout displays 4 columns which are "
         <<"categories.  -\n";
-    cout<<" - In these categories there are 3 questions which are rated easy," 
+    cout<<" - In each category there are 3 questions which are rated easy," 
         <<" medium  -"<<endl;
-    cout<<" - or hard. To play you will have to choose a category,then choose "
-        <<"a level -"<<endl;
-    cout<<" - of difficulty. Points will be awarded accordingly for each "
+    cout<<" - or hard. Object of game is to answer as many questions correct."
+            "Points will be awarded accordingly for each "
         <<"question you -"<<endl; 
     cout<<" - answer  correctly. Have fun!                                     "
             <<"       -"<<endl;
-    cout<<" -------------------------------------------------------------"
-        <<"--------------"<<endl;   
+    cout<<" ----------------------------------------------------------------\n";
     cout<<endl;
     
     //Instructions on how to play the game
+    cout<<setw(28)<<" "<<"How to play:"<<endl;
+    cout<<setw(28)<<" "<<"------------"<<endl;
     cout<<"To choose a category enter the character 'M' for movies, 'A' for "
         <<"animals, 'H' for history.\n";   
     cout<<"To choose a level of difficulty enter 'easy', 'medium', or 'hard'\n";
@@ -109,14 +114,14 @@ int main(int argc, char** argv) {
             cout<<"---------------"<<endl;
             cout<<"Points: "<<wins<<endl;
             cout<<"Losses: "<<losses<<endl;
-            cout<<"Total points: "<<total<<endl;
+            cout<<"Total points: "<<totalQ<<endl;
             cout<<fixed<<setprecision(1)<<showpoint;
             cout<<"Percentage out of total possible: "
-                <<static_cast<float>(wins/total)*PERCENT<<"%"<<endl;
-            grade=(wins>=24)? "Excellent you got all correct!!":
-            (wins>=14)? "Great job, you know some things.":
-            (wins<14)? "You need to start reading some books!":"Did you even try?";
-            cout<<grade<<endl;
+                <<static_cast<float>(wins/totalQ)*PERCENT<<"%"<<endl;
+            crtq=(wins>=24)? "Excellent you got all correct!!":
+                  (wins>=14)? "Great job, you know some things.":
+                  (wins<14)? "You need to start reading some books!":"Did you even try?";
+            cout<<crtq<<endl;
             
             return 0;
         }
@@ -144,6 +149,7 @@ int main(int argc, char** argv) {
                 //Else if level is 'easy' display the easy question.               
                                
                 else if (level=="easy"||level=="Easy"||level=="EASY"){
+                    if(m1){
                    cout<<"In the movie Toy Story, what actor plays the voice of"
                            " sheriff Woody?"<<endl;
                    
@@ -162,12 +168,18 @@ int main(int argc, char** argv) {
                       else { 
                         cout<<"You got it wrong sorry!"<<endl;    
                         losses++;}
+                   m1 = false;
+                }
+                     else if (m1 ==false){
+                        cout<<"already answered"<<endl;
+                    }
                 }
                       
                   
                 //Using else if level is 'Medium' display question
                 
                 else if (level=="medium"||level=="Medium"||level=="MEDIUM"){
+                   
                    cout<<"Which block buster movie ends in tragedy when a ship "
                        <<"attempts to voyage from England to New York?"<<endl;
                    cin>>answer1;
@@ -410,5 +422,19 @@ int main(int argc, char** argv) {
     
     //Exit stage right!
     return 0;
+    
+    
+    
+    
 }
-
+//Function to "spin a wheel" of questions
+string fnlSpin(){
+    const int SIZE = 10;
+    string wheel[SIZE] ={"hey","you","there","go","home","heyaaa","another number","This is the second question","okay","ten"};
+    int rnNum= (rand()%10);
+    int answer = rnNum;
+    string value = wheel[rnNum];
+    cout<<answer<<endl;
+    
+    return value;
+}
