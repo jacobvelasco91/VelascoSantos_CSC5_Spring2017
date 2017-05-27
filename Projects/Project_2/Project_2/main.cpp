@@ -20,6 +20,9 @@ using namespace std; //Name-space under which system libraries exist
 
 //Function Prototypes
 string fnlSpin();
+void   gmeTble();
+void   intro();
+void   stats(int,int);
 
 //Execution begins here
 int main(int argc, char** argv) {
@@ -30,150 +33,86 @@ int main(int argc, char** argv) {
     string level;                 //User's level choice as an input string
     string answer1,answer2;       //Variables to hold answers; then compare
     int wins=0, losses=0;         //Integer Variables;to increment wins & losses
-    string crtq;                  //String that will generate critique response 
-    float totalQ=24.0f;           //Total Questions available to ask
-    const float PERCENT=100.0f;   //Constant float percent 
-    bool m1=true,m2=true,m3=true; //for M ?'s if true makes ? available
-    bool a1=true,a2=true,a3=true; //for A ?'s if true makes ? available
-    bool c1=true,c2=true,c3=true; //for C ?'s if true makes ? available
-    bool h1=true,h2=true,h3=true; //for H ?'s if true makes ? available
+    bool m1=true,m2=true,m3=true; //for M ?'s; if true it makes ? available
+    bool a1=true,a2=true,a3=true; //for A ?'s; if true it makes ? available
+    bool c1=true,c2=true,c3=true; //for C ?'s; if true it makes ? available
+    bool h1=true,h2=true,h3=true; //for H ?'s; if true it makes ? available
     
     
-   
-   
+    //Function to bring paragraph explaining Game
+    intro();
     
-  
+    //Function to bring the game table to the front
+    gmeTble();
     
-  
     
-    //Welcoming introduction and Name of Game.
-    cout<<setw(16)<<" "<<"-       Welcome to AskAbout!      -"<<endl;
-    cout<<" ----------------------------------------------------------------\n";
-    //Explanation of the game
-    cout<<" - Similar to Jeopardy, AskAbout displays 4 columns which are "
-        <<"categories.  -\n";
-    cout<<" - In each category there are 3 questions which are rated easy," 
-        <<" medium  -"<<endl;
-    cout<<" - or hard. Object of game is to answer as many questions correct."
-            "Points will be awarded accordingly for each "
-        <<"question you -"<<endl; 
-    cout<<" - answer  correctly. Have fun!                                     "
-            <<"       -"<<endl;
-    cout<<" ----------------------------------------------------------------\n";
-    cout<<endl;
-    
-    //Instructions on how to play the game
-    cout<<setw(28)<<" "<<"How to play:"<<endl;
-    cout<<setw(28)<<" "<<"------------"<<endl;
-    cout<<"To choose a category enter the character 'M' for movies, 'A' for "
-        <<"animals, 'H' for history.\n";   
-    cout<<"To choose a level of difficulty enter 'easy', 'medium', or 'hard'\n";
-    cout<<endl;
-    //Display Game table.
-    cout<<"      ## When all categories are answered press X ##"<<endl;
-    cout<<"      ##    for statistics and to end the game    ##"<<endl;
-    cout<<"  ______________________________________________________________ \n";
-    cout<<" |      MOVIES       |       ANIMALS       |       HISTORY      |\n";
-    cout<<" |===================|=====================|====================|\n";
-    cout<<" |                   |                     |                    |\n";
-    cout<<" |       Easy        |        Easy         |        Easy        |\n";
-    cout<<" |                   |                     |                    |\n";
-    cout<<" |*******************|*********************|********************|\n";
-    cout<<" |                   |                     |                    |\n";
-    cout<<" |      Medium       |       Medium        |       Medium       |\n";
-    cout<<" |                   |                     |                    |\n";
-    cout<<" |*******************|*********************|********************|\n";
-    cout<<" |                   |                     |                    |\n";
-    cout<<" |       Hard        |        Hard         |        Hard        |\n";
-    cout<<" |                   |                     |                    |\n";
-    cout<<" |*******************|*********************|********************|\n";
-    cout<<endl;
-    
-          
-    
-    //Have the user enter category and level of difficulty
-    
-    //using a Do While loop, make sure user enters correct data
+    //do-while loop for continual game play until all questions asked
     do{
-        // A do while loop to make sure user enters correct data
-        do{
-        cout<<"Choose a category: ";cin>>choice;
-        if (!(choice=='M'||choice=='A'||choice=='H'||choice=='X'))
-        cout<<"*Enter correct category character*\n";
-        } while (!(choice=='M'||choice=='A'||choice=='H'||choice=='X'));
-       
+  
+    //Have the user enter category choice
+    cout<<"Enter a category: ";cin>>choice;
+    //while loop for input validation
+    while(!(choice=='C'||choice=='M'||choice=='A'||choice=='H'||choice=='x'||choice=='X')){
+        cout<<"*Invalid: enter character letter*"<<endl;
+        cout<<"Enter a category: ";cin>>choice;
+    }
+    //If statement to check if user exited game, if so, give statistics
+    if(choice=='X'||choice=='x'){
+        //Function for statistics, wins and losses given as arguments
+        stats(wins,losses);
+        return 0;
+    }
     
-            
-           
-               
-        //Statistics to show score and percentages
-        if (choice=='X'||choice=='x'){
-            cout<<fixed<<setprecision(0);
-            cout<<endl;
-            cout<<"  Statistics"<<endl;
-            cout<<"---------------"<<endl;
-            cout<<"Points: "<<wins<<endl;
-            cout<<"Losses: "<<losses<<endl;
-            cout<<"Total points: "<<totalQ<<endl;
-            cout<<fixed<<setprecision(1)<<showpoint;
-            cout<<"Percentage out of total possible: "
-                <<static_cast<float>(wins/totalQ)*PERCENT<<"%"<<endl;
-            crtq=(wins>=24)? "Excellent you got all correct!!":
-                  (wins>=14)? "Great job, you know some things.":
-                  (wins<14)? "You need to start reading some books!":"Did you even try?";
-            cout<<crtq<<endl;
-            
-            return 0;
-        }
-    
+        
+
     //Users category choice will be directed by a switch case 
     switch (choice){
         
-        //Movie category
+        //If 'M' directed to Movie category
         case 'M':
-            
-            //Using a 'do, while' loop Have user enter difficulty level
-            
-            //if difficulty level does not match the correct 'level' data, keep
-            //looping while it is not correct, until it is correct.
-            
-            do{
-                
-                cout<<"Difficulty level: "; cin>>level; 
-               
-                if (!(level=="easy"||level=="Easy"||level=="EASY"
-                    ||level=="medium"||level=="Medium"||level=="MEDIUM"
-                    ||level=="hard"||level=="Hard"||level=="HARD"))
-                   cout<<"*Enter correct difficulty level*"<<endl;
-                   
-                //Else if level is 'easy' display the easy question.               
-                               
-                else if (level=="easy"||level=="Easy"||level=="EASY"){
-                    if(m1){
+            //Ask user what level difficulty desired
+            cout<<"Difficulty level: ";cin>>level;
+            //while loop for input validation
+            while(!(level=="easy"||level=="Easy"||level=="EASY"||
+                    level=="medium"||level=="Medium"||level=="MEDIUM"||
+                    level=="hard"||level=="Hard"||level=="HARD")){
+                cout<<"*INVALID* enter correct input"<<endl;
+                cout<<"Difficulty level: ";cin>>level;
+            }
+            //if level is 'easy' display the easy question.
+            if (level=="easy"||level=="Easy"||level=="EASY"){
+                //If m1 is false, question has been asked already
+                if(m1==false){
+                    
+                    cout<<"*Question answered already*"<<endl;
+                }
+                //if m1 is true, question has not been asked, so, ask question.
+                else if(m1){
                    cout<<"In the movie Toy Story, what actor plays the voice of"
-                           " sheriff Woody?"<<endl;
-                   
-                   //Using a two string data types the user enters a name
-                   
+                         " sheriff Woody?";
+                   //Using a two string data type, the user enters a name 
                    cin>>answer1>>answer2;
-                      if((answer1=="Tom"||answer1=="tom")&&(answer2=="Hanks"
-                        ||answer2=="hanks")) {
-                          
-                          //Using the increment add a point
-                          wins++;
-                        cout<<"You got it right! you get awarded 1 point"<<endl;
-                      }
-                      
-                      //If user got the question wrong increment the losses
-                      else { 
-                        cout<<"You got it wrong sorry!"<<endl;    
-                        losses++;}
-                   m1 = false;
+                   //If statement to check answer;
+                   if((answer1=="Tom"||answer1=="tom")&&(answer2=="Hanks"
+                        ||answer2=="hanks")){
+                       //Using the increment add a point to wins if correct
+                       wins++;
+                       cout<<"You got it right! you get awarded 1 point"<<endl;
+                       //setting Movie ? 1 to false, ? wont be available
+                       m1=false;  
+                   }
+                   else{
+                       cout<<"Sorry that wasnt it, it was tom hanks"<<endl;
+                       //setting Movie ? 1 to false, ? wont be available
+                       m1=false;
+                   }   
                 }
-                     else if (m1 ==false){
-                        cout<<"already answered"<<endl;
-                    }
-                }
+            }
+            
+            
+                
+                
+               
                       
                   
                 //Using else if level is 'Medium' display question
@@ -221,11 +160,7 @@ int main(int argc, char** argv) {
                         losses++;
                     }
                 }
-                    
-                    
-            } while (!(level=="easy"||level=="Easy"||level=="EASY"
-                    ||level=="medium"||level=="Medium"||level=="MEDIUM"
-                    ||level=="hard"||level=="Hard"||level=="HARD"));   
+                      
             break;
                 
                 
@@ -319,9 +254,11 @@ int main(int argc, char** argv) {
                 
         
         case 'H':
-            do{
+            cout<<"Difficulty level: "; cin>>level;
+          
+            
                 
-                cout<<"Difficulty level: "; cin>>level; 
+               
                
                 if (!(level=="easy"||level=="Easy"||level=="EASY"
                     ||level=="medium"||level=="Medium"||level=="MEDIUM"
@@ -399,33 +336,26 @@ int main(int argc, char** argv) {
                         losses++;
                     }
                 }
-                    
-                    
-            } while (!(level=="easy"||level=="Easy"||level=="EASY"
-                    ||level=="medium"||level=="Medium"||level=="MEDIUM"
-                    ||level=="hard"||level=="Hard"||level=="HARD"));   
-            break;
-            
-                
-            
-            
-                
-                
-   }
-    
-    
-   } while (choice=='M'||choice=='A'||choice=='H');                      
-                       
-                   
-                     
-    
-    
-    //Exit stage right!
+    }
+    //End of do while loop if all questions have been answered
+    }while(m1==false);
+   
+    //Exit stage right
     return 0;
-    
-    
-    
-    
+}
+                    
+void intro(){
+    //Welcoming introduction and Name of Game.
+    cout<<setw(16)<<" "<<"-       Welcome to AskAbout!      -"<<endl;
+    cout<<" ----------------------------------------------------------------\n";
+    //Explanation of the game
+    cout<<" Similar to Jeopardy, AskAbout displays a category in each column\n";
+    cout<<" In each category there are 3 questions which are rated easy, \n";
+    cout<<" Medium, and hard.Object of game is to answer as many questions\n";
+    cout<<" correct.Points will be added accordingly, for each question you\n";
+    cout<<" answer correctly and for each question you get wrong. have fun!\n";
+    cout<<" ----------------------------------------------------------------\n";
+    cout<<endl;
 }
 //Function to "spin a wheel" of questions
 string fnlSpin(){
@@ -437,4 +367,53 @@ string fnlSpin(){
     cout<<answer<<endl;
     
     return value;
+}
+void gmeTble(){
+     //Instructions on how to play the game
+    cout<<setw(28)<<" "<<"How to play:"<<endl;
+    cout<<setw(28)<<" "<<"------------"<<endl;
+    cout<<"To choose a category, enter the character according to the column\n";
+    cout<<"For level of difficulty enter  'easy', 'medium', or 'hard'\n";
+    cout<<endl;
+    cout<<"      (C)            (M)             (A)             (H)  \n";
+    
+    //Display Game table.
+    cout<<"  ____________________________________________________________\n";
+    cout<<" |     C++     |    MOVIES    |    ANIMALS    |    HISTORY    |\n";
+    cout<<" |=============|==============|===============|===============|\n";
+    cout<<" |             |              |               |               |\n";
+    cout<<" |    Easy     |     Easy     |      Easy     |      Easy     |\n";
+    cout<<" |             |              |               |               |\n";
+    cout<<" |============================================================|\n";
+    cout<<" |             |              |               |               |\n";
+    cout<<" |   Medium    |    Medium    |     Medium    |     Medium    |\n";
+    cout<<" |             |              |               |               |\n";
+    cout<<" |============================================================|\n";
+    cout<<" |             |              |               |               |\n";
+    cout<<" |    Hard     |     Hard     |      Hard     |      Hard     |\n";
+    cout<<" |             |              |               |               |\n";
+    cout<<"  ============================================================ \n";
+    cout<<" *Enter X to exit game"<<endl;
+    cout<<endl;
+    
+}
+void stats(int w,int l){
+    string crtq;                  //String that will generate critique response 
+    float totalQ=24.0f;           //Total points available
+    const float PERCENT=100.0f;   //Constant float percent 
+    cout<<fixed<<setprecision(0);
+            cout<<endl;
+            cout<<"  Statistics"<<endl;
+            cout<<"---------------"<<endl;
+            cout<<"Points: "<<w<<endl;
+            cout<<"Losses: "<<l<<endl;
+            cout<<"Total points possible: "<<totalQ<<endl;
+            cout<<fixed<<setprecision(1)<<showpoint;
+            cout<<"Percentage out of total possible: "
+                <<static_cast<float>(w/totalQ)*PERCENT<<"%"<<endl;
+            crtq=(w>=24)? "Excellent you got all correct!!":
+                  (w>=14)? "Great job, you know some things.":
+                  (w<14)? "You need to start reading some books!":"Did you even try?";
+            cout<<crtq<<endl;
+            
 }
