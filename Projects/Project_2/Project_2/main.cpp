@@ -12,6 +12,7 @@
 #include <string>    // Required for the string class
 #include <ctime>     //Seed time for random number generator
 #include <cstdlib>   //Library for random number
+#include <fstream>
 using namespace std; //Name-space under which system libraries exist
 
 //User Libraries
@@ -24,6 +25,9 @@ void   gmeTble();
 void   intro();
 void   stats(int,int);
 string lvlVal(string);
+int bubble(int [],int );
+string players(string [], int );
+int pScores(int [],int );
 
 //Execution begins here
 int main(int argc, char** argv) {
@@ -38,13 +42,39 @@ int main(int argc, char** argv) {
     bool a1=true,a2=true,a3=true; //for A ?'s; if true it makes ? available
     bool c1=true,c2=true,c3=true; //for C ?'s; if true it makes ? available
     bool h1=true,h2=true,h3=true; //for H ?'s; if true it makes ? available
+    const  int SIZE = 7;
+    string pAry[SIZE]={};
+    int sAry[SIZE]={};
+   
+    
     
     
     //Function to bring paragraph explaining Game
     intro();
     
+    //Let user know who has played the game already
+    cout<<"These Players have already played:"<<endl;
+    //Invoking the function players(); filling pAry[]
+    players(pAry,SIZE);
+    //Invoking the function pScores();filling sAry[] creating a parallel array
+    pScores(sAry,SIZE);
+   //displaying other players & asking user to enter their name
+   for(int i=0;i<6;i++){
+        cout<<"-"<<pAry[i]<<endl;
+    }
+    cout<<"You're up next, whats your name? ";cin>>pAry[6];
+    cout<<"Thanks for playing "<<pAry[6]<<"!"<<endl;
+
+    
     //Function to bring the game table to the front
     gmeTble();
+    
+  
+    
+    
+    
+  
+    
     
     
     //do-while loop for continual game play until all  are asked
@@ -411,6 +441,27 @@ int main(int argc, char** argv) {
     //Exit stage right
     return 0;
 }
+int bubble(int array[],int SIZE){
+      //bubble sort
+    bool swap;
+    int temp;
+    
+    do{
+        swap = false;
+        for(int i = 0; i<(SIZE-1); i ++){
+            if(array[i]>array[i+1]){
+                temp = array[i];
+                array[i] = array[i+1];
+                array[i+1] = temp;
+                swap = true;
+            }
+        }
+    }while(swap);
+    
+    for(int i=0;i<SIZE;i++){
+        cout<<array[i]<<endl;
+    }
+}
 
 string lvlVal(string level){
     while(!(level=="easy"||level=="Easy"||level=="EASY"||
@@ -436,16 +487,7 @@ void intro(){
     cout<<endl;
 }
 //Function to "spin a wheel" of questions
-string fnlSpin(){
-    const int SIZE = 10;
-    string wheel[SIZE] ={"hey","you","there","go","home","heyaaa","another number","This is the second question","okay","ten"};
-    int rnNum= (rand()%10);
-    int answer = rnNum;
-    string value = wheel[rnNum];
-    cout<<answer<<endl;
-    
-    return value;
-}
+
 void gmeTble(){
      //Instructions on how to play the game
     cout<<setw(28)<<" "<<"How to play:"<<endl;
@@ -494,4 +536,19 @@ void stats(int w,int l){
                   (w<14)? "You need to start reading some books!":"Did you even try?";
             cout<<crtq<<endl;
             
+}
+string players(string list[],int size){
+    ifstream inputFile1;
+    inputFile1.open("players.txt");
+    for(int i = 0 ; i<size;i++){
+        inputFile1>>list[i];
+    }
+}
+
+int pScores(int scores[],int size){
+    ifstream inputFile2;
+    inputFile2.open("pScore.txt");
+    for(int i=0;i<size;i++){
+        inputFile2>>scores[i];
+    }
 }
