@@ -25,9 +25,11 @@ void   gmeTble();
 void   intro();
 void   stats(int,int);
 string lvlVal(string);
-int bubble(int [],int );
+void leaderB(string [],int [],string [],int );
 string players(string [], int );
+string rankList(string[], int);
 int pScores(int [],int );
+bool exPts();
 
 //Execution begins here
 int main(int argc, char** argv) {
@@ -42,36 +44,37 @@ int main(int argc, char** argv) {
     bool a1=true,a2=true,a3=true; //for A ?'s; if true it makes ? available
     bool c1=true,c2=true,c3=true; //for C ?'s; if true it makes ? available
     bool h1=true,h2=true,h3=true; //for H ?'s; if true it makes ? available
-    const  int SIZE = 7;
-    string pAry[SIZE]={};
-    int sAry[SIZE]={};
+    const  int SIZE = 7;          //Size of parallel array
+    string pAry[SIZE]={};         //Array to be filled with players name
+    string rnkAry[SIZE]={};
+    int sAry[SIZE]={};            //Array to be filled with players scores
+    char guess;                   //User response to Guess challenge
    
     
-    
-    
+
     //Function to bring paragraph explaining Game
     intro();
     
     //Let user know who has played the game already
     cout<<"These Players have already played:"<<endl;
-    //Invoking the function players(); filling pAry[]
+    //Invoking the function players() with an array argument; filling pAry[]
     players(pAry,SIZE);
     //Invoking the function pScores();filling sAry[] creating a parallel array
     pScores(sAry,SIZE);
-   //displaying other players & asking user to enter their name
+    //Filling Rank Array list
+    rankList(rnkAry,SIZE);
+
+   //displaying other players & asking user to enter name; pAry[6] initialized
    for(int i=0;i<6;i++){
         cout<<"-"<<pAry[i]<<endl;
     }
+    cout<<endl;
     cout<<"You're up next, whats your name? ";cin>>pAry[6];
     cout<<"Thanks for playing "<<pAry[6]<<"!"<<endl;
 
     
     //Function to bring the game table to the front
     gmeTble();
-    
-  
-    
-    
     
   
     
@@ -90,7 +93,30 @@ int main(int argc, char** argv) {
     //If statement; check if user exited game, if so, give statistics
     if(choice=='X'||choice=='x'){
         //Function for statistics; wins and losses given as arguments
+        sAry[6] = wins;
         stats(wins,losses);
+        //Function for leaderboard called and displayed
+        leaderB(rnkAry,sAry,pAry,SIZE);
+        cout<<endl;
+        cout<<"Want a chance to earn Bonus points?(Y or N) ";cin>>guess;
+    if(guess=='Y'||guess=='y'){
+        bool guessed;
+        guessed = exPts();
+        if(guessed == true){
+            wins+=25;
+            sAry[6] = wins;
+            cout<<"*****YOU GOT 25 EXTRA POINTS!*****"<<endl;
+            leaderB(rnkAry,sAry,pAry,SIZE);
+        }
+        else{
+            cout<<endl;
+            cout<<"No points awarded, your guess did not match any numbers."<<endl;
+        }
+    }
+    else{
+        cout<<"Ok, thanks for playing!"<<endl;
+    }
+      
         return 0;
     }
     
@@ -112,7 +138,7 @@ int main(int argc, char** argv) {
                     cout<<"What primitive data type we are prohibited"
                             "from using in Dr.Lehr's C++ class? ";
                     cin>>answer1;
-                    if(answer1=="Double"||answer1=="double"||answer1=="DOUBLE"){
+                    if(answer1=="Doubles"||answer1=="doubles"||answer1=="DOUBLES"){
                         cout<<"Correct, don't use if you know whats good for ya. awarded 1 point"<<endl;
                         wins++;
                         c1=false;
@@ -435,31 +461,89 @@ int main(int argc, char** argv) {
     //End of do while loop if all questions have been answered
     }while(c1==true||c2==true||c3==true||m1==true||m2==true||m3==true||
             a1==true||a2==true||a3==true||h1==true||h2==true||h3==true);
-    cout<<"*You answered all questions*"<<endl;
+    cout<<"*You answered all questions*"<<endl<<endl;
+    sAry[6] = wins;
     stats(wins,losses);
+    leaderB(rnkAry,sAry,pAry,SIZE);
+    //Bonus Round
+    cout<<"Want a chance to earn Bonus points?(Y or N) ";cin>>guess;
+    if(guess=='Y'||guess=='y'){
+        bool guessed;
+        guessed = exPts();
+        if(guessed == true){
+            wins+=25;
+            sAry[6] = wins;
+            cout<<"*****YOU GOT 25 EXTRA POINTS!*****"<<endl;
+            leaderB(rnkAry,sAry,pAry,SIZE);
+        }
+          else{
+            cout<<endl;
+            cout<<"No points awarded, your guess did not match any numbers."<<endl;
+        }
+    }
+    else{
+        cout<<"Ok, thanks for playing!"<<endl;
+    }
+    
+ 
    
     //Exit stage right
     return 0;
 }
-int bubble(int array[],int SIZE){
-      //bubble sort
+
+bool exPts(){
+    int ranNum[20]={};  //Array to hold random numbers
+    int g;              //Integer variable to hold number guess
+    //user guesses a random number
+    cout<<"Ok! Computer will generate 20 random numbers from 1-50";
+    cout<<" You must guess one of them, whats your guess? ";cin>>g;
+    //Filling Array with random numbers 1-100
+    for(int i=0;i<20;i++){
+        ranNum[i]=(rand()%50+1);
+    }
+    //Linear Search
+    for(int i=0;i<20;i++){
+        if(g==ranNum[i]){
+            return true; //return a true statement if found a correct match
+        }
+    }
+}
+
+
+void leaderB(string rankA[],int scoreA[],string playerA[], int size){
+    //bubble sort
     bool swap;
     int temp;
+    string temp1;
     
     do{
         swap = false;
-        for(int i = 0; i<(SIZE-1); i ++){
-            if(array[i]>array[i+1]){
-                temp = array[i];
-                array[i] = array[i+1];
-                array[i+1] = temp;
+        for(int i = 0; i<(size-1); i ++){
+            if(scoreA[i]<scoreA[i+1]){
+                temp = scoreA[i];
+                scoreA[i] = scoreA[i+1];
+                scoreA[i+1] = temp;
+                temp1 = playerA[i];
+                playerA[i] = playerA[i+1];
+                playerA[i+1] = temp1;
                 swap = true;
             }
         }
     }while(swap);
     
-    for(int i=0;i<SIZE;i++){
-        cout<<array[i]<<endl;
+    //outputting a file of leaderBoard results
+    ofstream output;
+    output.open("results.txt");
+    for(int i=0;i<size;i++){
+        output<<rankA[i]<<" "<<scoreA[i]<<" "<<playerA[i]<<endl;
+    }
+    
+    //Displaying Leader board
+    cout<<setw(5)<<"RANK"<<setw(10)<<"POINTS"<<setw(12)<<"NAME"<<endl;
+    cout<<"_____________________________"<<endl;
+    for(int i=0;i<size;i++){
+   
+        cout<<setw(4)<<rankA[i]<<setw(9)<<scoreA[i]<<setw(14)<<playerA[i]<<endl;
     }
 }
 
@@ -486,7 +570,7 @@ void intro(){
     cout<<" ----------------------------------------------------------------\n";
     cout<<endl;
 }
-//Function to "spin a wheel" of questions
+
 
 void gmeTble(){
      //Instructions on how to play the game
@@ -523,7 +607,7 @@ void stats(int w,int l){
     const float PERCENT=100.0f;   //Constant float percent 
     cout<<fixed<<setprecision(0);
             cout<<endl;
-            cout<<"  Statistics"<<endl;
+            cout<<"Your Statistics"<<endl;
             cout<<"---------------"<<endl;
             cout<<"Points: "<<w<<endl;
             cout<<"Losses: "<<l<<endl;
@@ -535,6 +619,7 @@ void stats(int w,int l){
                   (w>=14)? "Great job, you know some things.":
                   (w<14)? "You need to start reading some books!":"Did you even try?";
             cout<<crtq<<endl;
+            cout<<endl;
             
 }
 string players(string list[],int size){
@@ -550,5 +635,13 @@ int pScores(int scores[],int size){
     inputFile2.open("pScore.txt");
     for(int i=0;i<size;i++){
         inputFile2>>scores[i];
+    }
+}
+
+string rankList(string rAry[],int size){
+      ifstream inputFile3;
+    inputFile3.open("rank.txt");
+    for(int i=0;i<size;i++){
+        inputFile3>>rAry[i];
     }
 }
