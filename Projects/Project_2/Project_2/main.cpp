@@ -20,7 +20,6 @@ using namespace std; //Name-space under which system libraries exist
 //Global Constants
 
 //Function Prototypes
-string fnlSpin();
 void   gmeTble();
 void   intro();
 void   stats(int,int);
@@ -99,23 +98,23 @@ int main(int argc, char** argv) {
         leaderB(rnkAry,sAry,pAry,SIZE);
         cout<<endl;
         cout<<"Want a chance to earn Bonus points?(Y or N) ";cin>>guess;
-    if(guess=='Y'||guess=='y'){
-        bool guessed;
-        guessed = exPts();
-        if(guessed == true){
-            wins+=25;
-            sAry[6] = wins;
-            cout<<"*****YOU GOT 25 EXTRA POINTS!*****"<<endl;
-            leaderB(rnkAry,sAry,pAry,SIZE);
+        if(guess=='Y'||guess=='y'){
+            bool guessed;
+            guessed = exPts();
+            if(guessed == true){
+                wins+=25;
+                sAry[6] = wins;
+                cout<<"*****YOU GOT 25 EXTRA POINTS!*****"<<endl;
+                leaderB(rnkAry,sAry,pAry,SIZE);
+            }
+            else{
+                cout<<endl;
+                cout<<"No points awarded, your guess did not match any numbers."<<endl;
+            }
         }
         else{
-            cout<<endl;
-            cout<<"No points awarded, your guess did not match any numbers."<<endl;
+            cout<<"Ok, thanks for playing!"<<endl;
         }
-    }
-    else{
-        cout<<"Ok, thanks for playing!"<<endl;
-    }
       
         return 0;
     }
@@ -135,7 +134,7 @@ int main(int argc, char** argv) {
                     cout<<"*Question answered already*"<<endl;
                 }
                 else if(c1==true){
-                    cout<<"What primitive data type we are prohibited"
+                    cout<<"What primitive data type are we prohibited"
                             "from using in Dr.Lehr's C++ class? ";
                     cin>>answer1;
                     if(answer1=="Doubles"||answer1=="doubles"||answer1=="DOUBLES"){
